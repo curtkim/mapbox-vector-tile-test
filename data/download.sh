@@ -1,0 +1,1 @@
+wget 'https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/ne:ne_10m_admin_0_countries@EPSG:900913@pbf/4/11/10.pbf'

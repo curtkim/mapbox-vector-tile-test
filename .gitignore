@@ -1,0 +1,4 @@
+*.mvt
+.gradle
+.idea
+build
