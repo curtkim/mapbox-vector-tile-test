@@ -1,12 +1,13 @@
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import com.wdtinc.mapbox_vector_tile.adapt.jts.MvtReader;
 import com.wdtinc.mapbox_vector_tile.adapt.jts.TagKeyValueMapConverter;
 import com.wdtinc.mapbox_vector_tile.adapt.jts.model.JtsLayer;
 import com.wdtinc.mapbox_vector_tile.adapt.jts.model.JtsMvt;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,7 +19,7 @@ public class ReadMvt {
 
     for(String filename : Arrays.asList("data/10.pbf", "test.mvt")) {
       JtsMvt jtsMvt = MvtReader.loadMvt(
-          new File(filename),
+          Path.of(filename),
           geomFactory,
           new TagKeyValueMapConverter());
 
@@ -27,11 +28,12 @@ public class ReadMvt {
       for (String layerName : jtsMvt.getLayersByName().keySet()) {
         System.out.println(layerName);
         JtsLayer layer = jtsMvt.getLayer(layerName);
-        System.out.println(layer.getExtent());
+        //System.out.println(layer.getExtent());
 
         Collection<Geometry> coll = layer.getGeometries();
         for (Geometry geometry : coll) {
           System.out.println(geometry);
+          System.out.println(geometry.getUserData());
         }
         // attributes는 어디에 있지?
       }
