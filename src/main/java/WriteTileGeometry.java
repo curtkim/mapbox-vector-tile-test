@@ -46,7 +46,6 @@ public class WriteTileGeometry {
         acceptAllGeomFilter);
 
     // 3. Features
-
     // Build MVT
     final VectorTile.Tile.Builder tileBuilder = VectorTile.Tile.newBuilder();
 
@@ -62,8 +61,8 @@ public class WriteTileGeometry {
       layerBuilder.addAllFeatures(features);
       MvtLayerBuild.writeProps(layerBuilder, layerProps);
 
-      System.out.println(layerProps.getKeys());
-      System.out.println(layerProps.getVals());
+      System.out.println(layerProps.getKeys()); //[id, name]
+      System.out.println(layerProps.getVals()); //[1, a]
       // Build MVT layer
       final VectorTile.Tile.Layer layer = layerBuilder.build();
 
